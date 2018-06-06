@@ -6,7 +6,7 @@ library(dplyr)
 
 # Unemployment rate
 # URL: http://data.un.org/Data.aspx?q=unemployment&d=SDGs&f=series%3aSL_TLF_UEM
-unemployment.raw <- read.table('Data_Joel/unemployment_rate.csv', header=TRUE, sep=',')
+unemployment.raw <- read.table('Data_Joel/UnemploymentRate.csv', header=TRUE, sep=',')
 
 # Look at world data
 unemployment.world <- unemployment.raw %>%
@@ -59,49 +59,6 @@ length(unemployment.female$Country)
 length(unemployment.male$Country)
 length(unemployment.total$Country)
 
-
-#
-# With the following code, we tried to look at the mean of countries.
-# We realised that this method did not work very well and left it out
-#
-# Plot mean of unemployment rate for different gender distributions
-# library(ggplot2)
-# ggplot(unemployment.all, aes(x=Year)) + 
-#   geom_line(aes(y=Unemployment.Rate, color=Sex), stat='summary', fun.y='mean')
-# We can easily see the difference between genders
-# We can also see that all curves are following a quite similar path
-
-# Check how the difference of mean between male and female differs over the years
-# Maybe vs the total
-# unemployment.mean <- data.frame(
-#   Year=sort(unique(unemployment.all$Year)), 
-#   Total=with(unemployment.total, tapply(Unemployment.Rate, Year, mean)),
-#   Male=with(unemployment.male, tapply(Unemployment.Rate, Year, mean)),
-#   Female=with(unemployment.female, tapply(Unemployment.Rate, Year, mean))
-# )
-
-# Plot the difference of mean in unemployment rate between sexes, compared to the total
-# ggplot(unemployment.mean, aes(x=Year)) + 
-#   geom_line(aes(y=Female-Male), color='red') + 
-#   geom_line(aes(y=Total), color='blue') + 
-#   xlab('Year') + ylab('Mean difference')
-# We can see that as the unemployment rate decreases, 
-# the difference between male and female unemployment increases
-# This tells us that as when we see a decrease in unemployment rate, 
-# it is likely due to lots of male being employed
-
-# # Check if there is a significant difference in unemployment rate during the years
-# unemployment.total.lm <- lm(Unemployment.Rate ~ Year, data=unemployment.total)
-# summary(unemployment.total.lm)
-# # There is a significant decrease in total
-# 
-# unemployment.male.lm <- lm(Unemployment.Rate ~ Year, data=unemployment.male)
-# summary(unemployment.male.lm)
-# # There is not a significant decrease for males
-# 
-# unemployment.female.lm <- lm(Unemployment.Rate ~ Year, data=unemployment.female)
-# summary(unemployment.female.lm)
-# # There is not a significant decrease for females
 
 # Check if there is a significant difference between the start and end year
 # ANOVA tests
