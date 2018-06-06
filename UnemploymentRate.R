@@ -6,7 +6,7 @@ library(dplyr)
 
 # Unemployment rate
 # URL: http://data.un.org/Data.aspx?q=unemployment&d=SDGs&f=series%3aSL_TLF_UEM
-unemployment.raw <- read.table('Data_Joel/UnemploymentRate.csv', header=TRUE, sep=',')
+unemployment.raw <- read.table('Data_UnemploymentRate/UnemploymentRate.csv', header=TRUE, sep=',')
 
 # Look at world data
 unemployment.world <- unemployment.raw %>%
@@ -94,7 +94,7 @@ summary(unemployment.female.aov)
 # URL: http://data.un.org/Data.aspx?d=SNAAMA&f=grID%3a101%3bcurrID%3aUSD%3bpcFlag%3a1%3bitID%3a9
 # Measured in US dollars
 ####################################
-gdp.raw <- read.table('Data_Joel/GDPcapita.csv', header=TRUE, sep=',')
+gdp.raw <- read.table('Data_UnemploymentRate/GDPcapita.csv', header=TRUE, sep=',')
 str(gdp.raw)
 
 gdp <- gdp.raw %>% 
@@ -141,7 +141,7 @@ ggplot(unemployment.total.and.gdp, aes(x=GDP, y=Unemployment.Rate)) +
 # Measured in individuals
 # URL: http://data.un.org/Data.aspx?q=population+total&d=WDI&f=Indicator_Code%3aSP.POP.TOTL
 ####################################
-population.raw <- read.table('Data_Joel/TotalPopulation.csv', header=TRUE, sep=',', nrows=13123)
+population.raw <- read.table('Data_UnemploymentRate/TotalPopulation.csv', header=TRUE, sep=',', nrows=13123)
 str(population.raw)
 
 population <- population.raw %>% 
@@ -206,7 +206,7 @@ ggplot(pop, aes(x=Population, y=Unemployment.Rate)) +
 # Tertiary Education
 # URL: http://data.un.org/Data.aspx?d=UNESCO&f=series%3aE_56
 ####################################
-tertiary_education.raw <- read.table('Data_Joel/TertiaryEducation.csv', header=TRUE, sep=',')
+tertiary_education.raw <- read.table('Data_UnemploymentRate/TertiaryEducation.csv', header=TRUE, sep=',')
 str(tertiary_education.raw)
 
 tertiary_education <- tertiary_education.raw %>% 
@@ -268,7 +268,7 @@ summary(unemployment.total.and.tertiary.lm)
 # Cellular subscriptions per 100 inhabitants
 # URL: http://data.un.org/Data.aspx?d=ITU&f=ind1Code%3aI911
 ####################################
-cellular_subscriptions.raw <- read.table('Data_Joel/CellularSubscriptions.csv', header=TRUE, sep=',')
+cellular_subscriptions.raw <- read.table('Data_UnemploymentRate/CellularSubscriptions.csv', header=TRUE, sep=',')
 str(cellular_subscriptions.raw)
 
 cellular_subscriptions <- cellular_subscriptions.raw %>% 
@@ -304,7 +304,7 @@ ggplot(unemployment.total.and.cellular, aes(x=CellularSubscriptions)) +
 # Percentage of Internet users
 # URL: http://data.un.org/Data.aspx?d=ITU&f=ind1Code%3aI99H
 ####################################
-internet_users.raw <- read.table('Data_Joel/InternetUsers.csv', header=TRUE, sep=',', nrows=4495)
+internet_users.raw <- read.table('Data_UnemploymentRate/InternetUsers.csv', header=TRUE, sep=',', nrows=4495)
 str(internet_users.raw)
 
 internet_users <- internet_users.raw %>% 
@@ -349,7 +349,7 @@ ggplot(unemployment.total.and.internet, aes(x=InternetUsers, y=Unemployment.Rate
 # Carbon dioxide emissions per capita. Measured in metric tons
 # URL: http://data.un.org/Data.aspx?d=MDG&f=seriesRowID%3a751
 ####################################
-emissions.raw <- read.table('Data_Joel/CarbonDioxideEmissionsPerCapita.csv', header=TRUE, sep=',')
+emissions.raw <- read.table('Data_UnemploymentRate/CarbonDioxideEmissionsPerCapita.csv', header=TRUE, sep=',')
 str(emissions.raw)
 
 emissions <- emissions.raw %>% 
@@ -393,7 +393,7 @@ ggplot(unemployment.total.and.emissions, aes(x=Emissions, y=Unemployment.Rate)) 
 # Youth Literacy rate
 # URL: http://data.un.org/Data.aspx?d=UNESCO&f=series%3aLR_AG15T24
 ####################################
-youth_literacy.raw <- read.table('Data_Joel/YouthLiteracyRate.csv', header=TRUE, sep=',')
+youth_literacy.raw <- read.table('Data_UnemploymentRate/YouthLiteracyRate.csv', header=TRUE, sep=',')
 str(youth_literacy.raw)
 
 youth_literacy <- youth_literacy.raw %>% 
@@ -428,7 +428,7 @@ summary(unemployment.total.and.youth_literacy.lm)
 # Adult Literacy rate
 # URL: http://data.un.org/Data.aspx?q=literacy&d=WHO&f=MEASURE_CODE%3aWHS9_85
 ####################################
-adult_literacy.raw <- read.table('Data_Joel/AdultLiteracyRate.csv', header=TRUE, sep=',', nrows=547)
+adult_literacy.raw <- read.table('Data_UnemploymentRate/AdultLiteracyRate.csv', header=TRUE, sep=',', nrows=547)
 str(adult_literacy.raw)
 
 adult_literacy <- adult_literacy.raw %>% 
@@ -512,7 +512,7 @@ summary(d.lm)
 # The estimations are for countries and continents
 # URL: http://data.un.org/Data.aspx?d=PopDiv&f=variableID%3a12
 ####################################
-population_prospects.raw <- read.table('Data_Joel/PopulationProspects.csv', header=TRUE, sep=',')
+population_prospects.raw <- read.table('Data_UnemploymentRate/PopulationProspects.csv', header=TRUE, sep=',')
 str(population_prospects.raw)
 
 population_prospects <- population_prospects.raw %>% 
