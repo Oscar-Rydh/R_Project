@@ -1,5 +1,3 @@
-setwd("/Users/jungeunyoo/Desktop/J/GCT564/project/")
-getwd()
 rm(list=ls())
 
 library(data.table)
@@ -95,7 +93,7 @@ plot(genderDiff$MSchoolDiff, genderDiff$IncomeDiff,
      ylab="Income differences", main=title)
 lines(genderDiff$MSchoolDiff, fit$fitted.values, col="red")
 
-pcacor <- cor(edat)
+#pcacor <- cor(edat)
 
 #difference in income gender
 income_df <- rbind(data.frame(Income = gender_df$IncomeF, Gender="Female"),
@@ -104,7 +102,7 @@ t.test(Income ~ Gender, data=income_df, var.equal=TRUE, conf.level = 0.95)
 
 
 # ----------------- GII data in 2014 ------------------#
-gii14<- read.csv("GII_simple.csv",header=F,stringsAsFactors=FALSE)
+gii14<- read.csv("GII14_simple.csv",header=F,stringsAsFactors=FALSE)
 colnames(gii14) = c("Country","GIIVal14","GIIRank14","MatMortality13","AdolBirth10_15","ParlSeat","SecondF05_14","SecondM05_14",
                     "LaborF13","LaborM13")
 
@@ -166,8 +164,8 @@ ggplot(data=labor_vs_mat, aes(x = LaborRatio, y = MaternityLeave, group=Country,
 fit <- lm(LaborRatio ~ MaternityLeave, data=labor_vs_mat)
 
 #labour participation vs income
-labor_vs_income <- data.frame(Country = gender_df$Country, Development = gender_df$Development, SecondEdu = gender_df$SecondF, Labor = gender_df$LaborF, Income = gender_df$IncomeF)
-labor_vs_income <- data.frame(Country = gender_df$Country, Development = gender_df$Development, SecondEdu = gender_df$SecondF, Labor = gender_df$LaborF, IncomeRatio = gender_df$IncomeF/gender_df$IncomeM)
+labor_vs_income <- data.frame(Country = gender_df$Country, Development = gender_df$Development, SecondEdu = gender_df$SecondF, Labor = gender_df$LaborF, Income = gender_df$IncomeF, IncomeRatio = gender_df$IncomeF/gender_df$IncomeM)
+#labor_vs_income <- data.frame(Country = gender_df$Country, Development = gender_df$Development, SecondEdu = gender_df$SecondF, Labor = gender_df$LaborF, IncomeRatio = gender_df$IncomeF/gender_df$IncomeM)
 
 labor_vs_income <- filter(labor_vs_income, Development == "M" | Development=="L")
 
@@ -178,8 +176,8 @@ ggplot(data=labor_vs_income, aes(x = Labor, y = Income)) +
 summary(lm(Income~Labor, data=labor_vs_income))
 
 #parl seat vs income
-parl_vs_income <- data.frame(Country = gender_df$Country, Development = gender_df$Development, ParliamentSeat = gender_df$ParlSeat, Labor = gender_df$LaborF, Income = gender_df$IncomeF)
-parl_vs_income <- data.frame(Country = gender_df$Country, Development = gender_df$Development, ParliamentSeat = gender_df$ParlSeat, Labor = gender_df$LaborF, IncomeRatio = gender_df$IncomeF/gender_df$IncomeM)
+parl_vs_income <- data.frame(Country = gender_df$Country, Development = gender_df$Development, ParliamentSeat = gender_df$ParlSeat, Labor = gender_df$LaborF, Income = gender_df$IncomeF,IncomeRatio = gender_df$IncomeF/gender_df$IncomeM)
+#parl_vs_income <- data.frame(Country = gender_df$Country, Development = gender_df$Development, ParliamentSeat = gender_df$ParlSeat, Labor = gender_df$LaborF, IncomeRatio = gender_df$IncomeF/gender_df$IncomeM)
 #overall
 ggplot(data=parl_vs_income, aes(x = ParliamentSeat, y = IncomeRatio)) + 
   geom_point(show.legend = FALSE)+
@@ -202,8 +200,8 @@ summary(lm(Income~SecondEdu, data=second_vs_income))
 
 
 #second vs income based on development status
-second_vs_income <- data.frame(Country = gender_df$Country, Development = gender_df$Development, SecondEdu = gender_df$SecondF, Income = gender_df$IncomeF)
-second_vs_income <- data.frame(Country = gender_df$Country, Development = gender_df$Development, SecondEdu = gender_df$SecondF, IncomeRatio = gender_df$IncomeF/gender_df$IncomeM)
+second_vs_income <- data.frame(Country = gender_df$Country, Development = gender_df$Development, SecondEdu = gender_df$SecondF, Income = gender_df$IncomeF,IncomeRatio = gender_df$IncomeF/gender_df$IncomeM)
+#second_vs_income <- data.frame(Country = gender_df$Country, Development = gender_df$Development, SecondEdu = gender_df$SecondF, IncomeRatio = gender_df$IncomeF/gender_df$IncomeM)
 
 #overall
 ggplot(data=second_vs_income, aes(x = SecondEdu, y = IncomeRatio)) + 
